@@ -1,0 +1,37 @@
+# Author      : Luis Merino Troncoso
+# Date        : 20/06/2021
+# Description : Certified Kubernetes Administrator Labs ( CNCF )
+#               Services
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: accounting
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-one
+  namespace: accounting
+  labels:
+    system: secondary
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      system: secondary
+  template:
+    metadata:
+      labels:
+        system: secondary
+    spec:
+      containers:
+      - image: nginx:1.20.1
+        imagePullPolicy: Always
+        name: nginx
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+      nodeSelector:
+        system: secondOne
+    

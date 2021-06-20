@@ -1,0 +1,19 @@
+# Author      : Luis Merino Troncoso
+# Date        : 20/06/2021
+# Description : Certified Kubernetes Administrator Labs ( CNCF )
+#               Batch Jobs
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sleepy
+spec:
+  parallelism: 2       
+  completions: 5       
+  template:
+    spec:
+      containers:
+      - name: resting
+        image: busybox
+        command: ["/bin/sleep"]
+        args: ["3"]
+      restartPolicy: Never

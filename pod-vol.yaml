@@ -1,0 +1,23 @@
+# Author      : Luis Merino Troncoso
+# Date        : 20/06/2021
+# Description : Certified Kubernetes Administrator Labs ( CNCF )
+#               Storage volumes emptydir
+apiVersion: v1
+kind: Pod
+metadata:
+  name: podvol
+  namespace: default
+spec:
+  containers:
+  - image: busybox
+    name: simplevol
+    command:
+    - sleep
+    - "3600"
+    volumeMounts:
+    - mountPath: /scratch
+      name: scratch-volume
+  volumes:
+  - name: scratch-volume
+    emptyDir: {}
+

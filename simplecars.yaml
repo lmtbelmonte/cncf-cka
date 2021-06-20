@@ -1,0 +1,20 @@
+# Author      : Luis Merino Troncoso
+# Date        : 20/06/2021
+# Description : Certified Kubernetes Administrator Labs ( CNCF )
+#               Storage - Mounting ConfigMaps as Vols
+apiVersion: v1
+kind: Pod
+metadata:
+  name: cars-demo
+  namespace: default
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+    volumeMounts:
+    - name: car-vol
+      mountPath: /etc/cars
+  volumes:
+  - name: car-vol
+    configMap:
+      name: fast-car  

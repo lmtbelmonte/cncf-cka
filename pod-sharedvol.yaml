@@ -1,0 +1,25 @@
+# Author      : Luis Merino Troncoso
+# Date        : 20/06/2021
+# Description : Certified Kubernetes Administrator Labs ( CNCF )
+#               Storage Shared Vols
+apiVersion: v1
+kind: Pod
+metadata:
+  name: podsharedvol
+  namespace: default
+spec:
+  containers:
+  - image: busybox
+    name: primervol
+    volumeMounts:
+    - mountPath: /primerdir
+      name: sharedvol
+  - image: busybox
+    name: segundovol
+    volumeMounts:
+    - mountPath: /segundodir
+      name: sharedvol  
+  volumes:
+  - name: sharedvol
+    emptyDir: {}
+

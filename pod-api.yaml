@@ -1,0 +1,12 @@
+# Author      : Luis Merino Troncoso
+# Date        : 20/06/2021
+# Description : Certified Kubernetes Administrator Labs ( CNCF )
+#               PODS
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: primerpod
+spec:
+  containers:
+  - image: nginx
+    name: luis
