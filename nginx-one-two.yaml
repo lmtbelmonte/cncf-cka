@@ -1,0 +1,85 @@
+# Author      : Luis Merino Troncoso
+# Date        : 20/06/2021
+# Description : Certified Kubernetes Administrator Labs ( CNCF )
+#               Ingress Controller - two pods 
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: accounting
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-one
+  namespace: accounting
+  labels:
+    app: web-one
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web-one
+  template:
+    metadata:
+      labels:
+        app: web-one
+    spec:
+      containers:
+      - image: nginx:1.20.1
+        imagePullPolicy: Always
+        name: nginx
+        ports:
+        - containerPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-two
+  namespace: accounting
+  labels:
+    app: web-two
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web-two
+  template:
+    metadata:
+      labels:
+        app: web-two
+    spec:
+      containers:
+      - image: nginx:1.20.1
+        imagePullPolicy: Always
+        name: nginx
+        ports:
+        - containerPort: 8080
+---          
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-one
+spec:
+  type: ClusterIP        
+  ports:
+  - name: http
+    port: 80
+    targetPort: 8080
+    protocol: TCP
+  selector:
+    app: web-one        
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-two
+spec:
+  type: ClusterIP        
+  ports:
+  - name: http
+    port: 80
+    targetPort: 8080
+    protocol: TCP
+  selector:
+    app: web-two  
