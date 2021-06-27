@@ -1,3 +1,7 @@
+# Author      : Luis Merino Troncoso
+# Date        : 20/06/2021
+# Description : Certified Kubernetes Administrator Labs ( CNCF )
+#               Netool 
 apiVersion: v1
 kind: Pod
 metadata:

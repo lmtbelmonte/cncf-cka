@@ -1,16 +1,24 @@
+# Author      : Luis Merino Troncoso
+# Date        : 20/06/2021
+# Description : Certified Kubernetes Administrator Labs ( CNCF )
+#               Ingress Controller - Ingress rules 
+#
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: minimal-ingress
+  name: ingress-test
+  namespace: default
 spec:
   rules:
-  - host: ghost.192.168.99.100.nip.io
+  - host: www.external.com
     http:
       paths:
-      - path: /testpath
-        pathType: Prefix
-        backend:
+      - backend:
           service:
-            name: ghost
+            name: web-one
             port:
-              number: 2380
+              number: 80
+        path: /
+        pathType: ImplementationSpecific
+status:
+  loadBlanacer: {}       
