@@ -1,3 +1,7 @@
+# Author      : Luis Merino Troncoso
+# Date        : 05/07/2021
+# Description : Certified Kubernetes Administrator Labs ( CNCF )
+#               Env Variables 
 apiVersion: v1
 kind: Pod
 metatdata:

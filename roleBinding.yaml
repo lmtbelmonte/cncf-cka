@@ -1,3 +1,7 @@
+# Author      : Luis Merino Troncoso
+# Date        : 20/06/2021
+# Description : Certified Kubernetes Administrator Labs ( CNCF )
+#               Roles & roleBindidng
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata: 

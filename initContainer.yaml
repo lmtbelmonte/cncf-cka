@@ -1,3 +1,7 @@
+# Author      : Luis Merino Troncoso
+# Date        : 08/07/2021
+# Description : Certified Kubernetes Administrator Labs ( CNCF )
+#               InitCointainers
 apiVersion: v1
 kind: Pod
 metadata:
