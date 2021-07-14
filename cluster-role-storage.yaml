@@ -1,0 +1,12 @@
+# Author      : Luis Merino Troncoso
+# Date        : 14/07/2021
+# Description : Certified Kubernetes Administrator Labs ( CNCF )
+#               Cluster roles - Storage
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: storage-admin
+rules:
+- apiGroups: ["storage.k8s.io"]
+  resources: ["persistentvolumes","storageclasses"]
+  verbs: ["list"]

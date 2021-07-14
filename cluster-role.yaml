@@ -1,0 +1,12 @@
+# Author      : Luis Merino Troncoso
+# Date        : 14/07/2021
+# Description : Certified Kubernetes Administrator Labs ( CNCF )
+#               Cluster roles 
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: cluster-role-nodes
+rules:
+- apiGroups: [""]
+  resources: ["nodes"]
+  verbs: ["list","get","create","delete"]
