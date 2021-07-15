@@ -1,0 +1,19 @@
+# Author      : Luis Merino Troncoso
+# Date        : 15/07/2021
+# Description : Certified Kubernetes Administrator Labs ( CNCF )
+#               Security Context - capabilities
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ubuntu-sleeper
+spec:
+  containers:
+  - command:
+    - sleep
+    - "4800"
+    image: ubuntu
+    name: ubuntu
+    securityContext:
+      capabilities:
+        add:
+        - SYS_TIME

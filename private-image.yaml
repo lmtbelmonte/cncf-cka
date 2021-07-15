@@ -1,0 +1,32 @@
+# Author      : Luis Merino Troncoso
+# Date        : 14/07/2021
+# Description : Certified Kubernetes Administrator Labs ( CNCF )
+#               Image security : Private images
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: web
+    manager: kube-controller-manager
+  name: web
+  namespace: default
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 2
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: web
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+      - image: myprivateregistry.com:5000/nginx:alpine
+        name: nginx
