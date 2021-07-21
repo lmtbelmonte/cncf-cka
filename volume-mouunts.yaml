@@ -1,0 +1,25 @@
+# Author      : Luis Merino Troncoso
+# Date        : 21/07/2021
+# Description : Certified Kubernetes Administrator Labs ( CNCF )
+#               # Author      : Luis Merino Troncoso
+# Date        : 14/07/2021
+# Description : Certified Kubernetes Administrator Labs ( CNCF )
+#               Volumes - hostpath Mount
+apiVersion: v1
+kind: Pod
+metadata:
+  name: generador-num-aleatorio
+spec:
+  containers:
+  - image: alpine
+    name: alpine
+    command: ["/bin/sh","-c"]
+    args: ["shuf -i 0-100 -n 1 >> /opt/number.out;"]
+    volumeMmounts:
+    - mountPath: /opt
+      name: data-volume
+  volumes:
+  - name: data-volume
+    hostPath:
+      path: /data
+      type: Directory

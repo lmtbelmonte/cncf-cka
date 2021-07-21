@@ -1,0 +1,21 @@
+# Author      : Luis Merino Troncoso
+# Date        : 21/07/2021
+# Description : Certified Kubernetes Administrator Labs ( CNCF )
+#               # Author      : Luis Merino Troncoso
+# Date        : 14/07/2021
+# Description : Certified Kubernetes Administrator Labs ( CNCF )
+#               Volumes - persistent Volumes
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-vol1
+spec:
+  accessModes:
+    - ReadWriteOnce
+  capacity:
+    storage: 1Gi
+  awsElasticBlockStore:
+    volumeID: <volume-id>
+    fsType: ext4
+  persistenVolumeReclaimPolicy: Retain
+    

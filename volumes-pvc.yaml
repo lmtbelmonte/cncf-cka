@@ -1,0 +1,14 @@
+# Author      : Luis Merino Troncoso
+# Date        : 21/07/2021
+# Description : Certified Kubernetes Administrator Labs ( CNCF )
+#               Volumes - persistent Volume Claim
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: myclaim
+spec: 
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 500Mi
