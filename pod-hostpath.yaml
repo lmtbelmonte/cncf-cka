@@ -1,0 +1,19 @@
+# Author      : Luis Merino Troncoso
+# Date        : 20/06/2021
+# Description : Certified Kubernetes Administrator Labs ( CNCF )
+#               Volumes - Persisten Volume hostPath type
+apiVersion: v1
+kind: Pod
+metadata:
+  name: webapp
+spec:
+  containers:
+  - image: kodekloud/event-simulator
+    name: event-simulator
+    volumeMounts:
+    - mountPath: /log
+      name: webapp
+  volumes:
+  - name: webapp
+    hostPath:
+      path: /var/log/webapp

@@ -1,0 +1,16 @@
+# Author      : Luis Merino Troncoso
+# Date        : 20/06/2021
+# Description : Certified Kubernetes Administrator Labs ( CNCF )
+#               Volumes - Persisten Volume hostPath type
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-log
+spec:
+  accessModes:
+  - ReadWriteMany
+  capacity:
+    storage: 100Mi
+  hostPath: 
+    path: /pv/log
+  persistentVolumeReclaimPolicy: Retain
