@@ -1,0 +1,19 @@
+# Author      : Luis Merino Troncoso
+# Date        : 22/06/2021
+# Description : Certified Kubernetes Administrator Labs ( CNCF )
+#               Storage - Dynamic Provisioning -Persistent Volume Claims with storage classes 
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+spec:
+  containers:
+  - image: nginx:alpine
+    name: nginx
+    volumeMounts:
+    - mountPath: /var/www/html
+      name: local-vol
+  volumes:
+  - name: local-vol
+    persistentVolumeClaim:
+      claimName: local-pvc
