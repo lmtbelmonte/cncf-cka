@@ -1,0 +1,36 @@
+# Author      : Luis Merino Troncoso
+# Date        : 30/09/2021
+# Description : Certified Kubernetes Administrator Labs ( CNCF )
+#               Affinity/Antiaffinity - Pod antiaffinity for distribution with topologyKey
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    id: very-important
+  name: deploy-important
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      id: very-important
+  template:
+    metadata:
+      labels:
+        id: very-important
+    spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: id
+                operator: In
+                values:
+                - very-important
+            topologyKey: kubernetes.io/hostname
+      containers:
+      - image: nginx:1.17.6-alpine
+        name: container1
+      - image: kubernetes/pause
+        name: container2
