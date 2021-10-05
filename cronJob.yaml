@@ -1,0 +1,30 @@
+# Author      : Luis Merino Troncoso
+# Date        : 05/10/2021
+# Description : Certified Kubernetes Administrator Labs ( CNCF )
+#               jobs/cronJobs : Linux style cronjob syntax
+#
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  creationTimestamp: null
+  name: sleepy
+spec:
+  jobTemplate:
+    metadata:
+      creationTimestamp: null
+      name: sleepy
+    spec:
+      template:
+        metadata:
+          creationTimestamp: null
+        spec:
+          activeDeadlineSeconds: 10      
+          containers:
+          - image: busybox
+            name: sleepy
+            command: ["/bin/sleep"]
+            args: ["30"]
+            resources: {}
+          restartPolicy: Never
+  schedule: '*/2 * * * *'
+status: {}
