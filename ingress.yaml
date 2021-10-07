@@ -20,5 +20,3 @@ spec:
               number: 80
         path: /
         pathType: ImplementationSpecific
-status:
-  loadBlanacer: {}       
